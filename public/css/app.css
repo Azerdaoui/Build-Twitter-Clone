@@ -17875,6 +17875,9 @@ body {
 }
 
 a {
+  --text-opacity: 1;
+  color: #4299e1;
+  color: rgba(66, 153, 225, var(--text-opacity));
 }
 
 @media (min-width: 640px) {
