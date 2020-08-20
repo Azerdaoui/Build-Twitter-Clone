@@ -5,24 +5,23 @@
 </template>
 
 <script>
-import axios from 'axios'
-export default {
-    data() {
-        return{
-            tweets: []
-        }
-    },
+    import { mapGetters, mapActions } from 'vuex'
 
-    methods:{
-        async getTweets(){
-            let response = await axios.get('/api/timeline');
+    export default {
+        computed: {
+            ...mapGetters({
+                tweets:('timeline/tweets')
+            })
+        },
 
-            this.tweets = response.data.data
-        }
-    },
+        methods: {
+            ...mapActions({
+                getTweets: 'timeline/getTweets'
+            })
+        },
 
-    mounted() {
-        this.getTweets()
-    },
-}
+        mounted() {
+            this.getTweets()
+        },
+    }
 </script>
